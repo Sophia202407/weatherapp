@@ -3,7 +3,7 @@ apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   name: weather-backend
-  namespace: smdewi-dev
+  namespace: sophiawanghongxia-dev
   labels:
     app: weather-backend
 ---
@@ -11,14 +11,14 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   name: weather-backend
-  namespace: smdewi-dev
+  namespace: sophiawanghongxia-dev
   labels:
     app: weather-backend
 spec:
   source:
     type: Git
     git:
-      uri: "https://github.com/dewi-xaltius/weather-backend.git"
+      uri: "https://github.com/Sophia202407/weatherapp"
       ref: main
   strategy:
     type: Docker
@@ -41,7 +41,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weather-backend
-  namespace: smdewi-dev
+  namespace: sophiawanghongxia-dev
   labels:
     app: weather-backend
 spec:
@@ -56,7 +56,7 @@ spec:
     spec:
       containers:
         - name: weather-backend
-          image: image-registry.openshift-image-registry.svc:5000/smdewi-dev/weather-backend:latest
+          image: image-registry.openshift-image-registry.svc:5000/sophiawanghongxia-dev/weather-backend:latest
           ports:
             - name: http
               containerPort: 8080
@@ -76,7 +76,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: weather-backend
-  namespace: smdewi-dev
+  namespace: sophiawanghongxia-dev
   labels:
     app: weather-backend
 spec:
@@ -91,7 +91,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: weather-backend-route
-  namespace: smdewi-dev
+  namespace: sophiawanghongxia-dev
   labels:
     app: weather-backend
 spec:
