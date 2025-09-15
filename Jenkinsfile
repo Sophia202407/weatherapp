@@ -15,16 +15,16 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-              bat 'docker build -t your-docker-hub-username/github-demo .'
+              bat 'docker build -t sophia514/github-demo3 .'
             }
            }
         
          stage('Push Docker Image') {
               steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub￾credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 
             'DOCKER_USERNAME')]) {
                bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
-               bat 'docker push your-docker-hub-username/github-demo'
+               bat 'docker push sophia514/github-demo3'
              }
             }
          }
